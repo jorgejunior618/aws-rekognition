@@ -1,4 +1,5 @@
 import express, { json, urlencoded } from "express";
+import aws from 'aws-sdk';
 
 const app = express();
 

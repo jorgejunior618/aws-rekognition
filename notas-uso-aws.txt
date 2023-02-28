@@ -1,0 +1,2 @@
+Configurar "AWS SDK":
+  Baixar o SDK no projeto
