@@ -1,4 +1,5 @@
 /build
 /node_modules
 
-aws-config.json
+aws-config.ts
+.env
