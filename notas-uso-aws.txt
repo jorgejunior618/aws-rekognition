@@ -1,2 +1,22 @@
 Configurar "AWS SDK":
   Baixar o SDK no projeto
+  Configurar as Variaveis de ambiente:
+    `AWS_ACCESS_KEY_ID=<ID_DA_CHAVE_DE_ACESSO>
+    AWS_SECRET_ACCESS_KEY=<SENHA_DA_CHAVE_DE_ACESSO>`
+  Configurar a região: `aws.config.update({region: 'us-east-1'});`
+
+  Na requisição:
+    Instanciar o modulo "Rekognition" da biblioteca aws:
+      `const rekognition = new aws.Rekognition()`
+    Configurar o objeto no padrão:
+      `const params: Rekognition.CompareFacesRequest = {
+        SourceImage: {
+          Bytes: face1,
+        },
+        TargetImage: {
+          Bytes: face2,
+        },
+        SimilarityThreshold: 90,
+      } // Codigo Javascript`
+    Enviar a requisiçção com os parametros:
+      `rekognition.compareFaces(params, (erro, dados) => {/*...*/})`
