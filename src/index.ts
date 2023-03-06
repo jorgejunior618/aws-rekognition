@@ -1,12 +1,13 @@
 import express, { json, urlencoded } from "express";
-import aws from 'aws-sdk';
+
+import routes from "./routes";
 
 const app = express();
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
-// app.use(userRoute);
+app.use(routes);
 // app.use(authRoute);
 // app.use(errorHandler);
 
