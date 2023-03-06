@@ -7,7 +7,8 @@ Configurar "AWS SDK":
 
   Na requisição:
     Instanciar o modulo "Rekognition" da biblioteca aws:
-      `const rekognition = new aws.Rekognition()`
+      `const rekognition = new aws.Rekognition()
+      // Arquivo em: ./src/aws/index.ts`
     Configurar o objeto no padrão:
       `const params: Rekognition.CompareFacesRequest = {
         SourceImage: {
@@ -17,6 +18,7 @@ Configurar "AWS SDK":
           Bytes: face2,
         },
         SimilarityThreshold: 90,
-      } // Codigo Javascript`
+      } // Codigo Javascript: './src/routes/index.ts' linha:20`
     Enviar a requisiçção com os parametros:
-      `rekognition.compareFaces(params, (erro, dados) => {/*...*/})`
+      `rekognition.compareFaces(params, (erro, dados) => {/*...*/})
+      // Codigo Javascript: './src/routes/index.ts' linha:31`
