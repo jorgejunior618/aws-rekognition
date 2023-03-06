@@ -2,20 +2,25 @@ import { Rekognition } from "aws-sdk";
 import { NextFunction, Request, Response, Router } from "express";
 import { decode as base64decode } from 'base64-arraybuffer'
 import rekognition from "../aws";
+import { img2 } from "./imgs";
 
 const routes = Router();
 
 routes.post('/aws-request', (
-    request: Request<unknown ,unknown ,{img1: string; img2: string;}>,
+    request: Request<unknown, unknown, {img: string;}>,
     response: Response,
   ) => {
-    const { img1, img2 } = request.body;
+    const { img } = request.body;
+
+    const face1 = base64decode(img);
+    const face2 = base64decode(img2);
+    
     const params: Rekognition.CompareFacesRequest = {
       SourceImage: {
-        Bytes: base64decode(img1),
+        Bytes: face1,
       },
       TargetImage: {
-        Bytes: base64decode(img2),
+        Bytes: face2,
       },
       SimilarityThreshold: 90,
     };
@@ -28,6 +33,7 @@ routes.post('/aws-request', (
           console.log(`STACK: ${erro.stack}`);
         } else {
           console.log(dados);
+          response.status(200).send(dados)
         }
       }
     );
